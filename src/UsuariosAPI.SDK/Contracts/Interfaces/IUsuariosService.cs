@@ -30,6 +30,12 @@
 
         Task<IResponse> EliminarRolUsuariosBatch(UpdateUsuarioRolesBatchDTO input);
 
+        /// <summary>
+        /// Igual que <see cref="EliminarRolUsuariosBatch"/>, pero autentica con el token de aplicación de Azure AD
+        /// y llama a la ruta azureAD. Usar desde procesos sin usuario logueado.
+        /// </summary>
+        Task<IResponse> EliminarRolUsuariosBatchAzureAD(UpdateUsuarioRolesBatchDTO input);
+
         Task<IPaginatedResponse<ReporteUsuariosRolesSRCDTO>> GetUsuariosRolesSRC(GetPaginatedReporteUsuariosRolesSRCDTO dto, bool gdiAuth = true);
 
         Task<IPaginatedResponse<RolDetailsDTO>> GetRolesByIds(GetByIdsListDTO dto, bool gdiAuth = true);

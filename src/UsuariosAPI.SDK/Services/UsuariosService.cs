@@ -190,6 +190,13 @@
             return await this.HttpClientService.PatchResourceAsync(this.BaseAddressAPI, input, "usuarios/eliminar-rol-usuarios")!;
         }
 
+        public async Task<IResponse> EliminarRolUsuariosBatchAzureAD(UpdateUsuarioRolesBatchDTO input)
+        {
+            var azureAdToken = await this.AzureAdAuthClient.GetTokenAsync();
+
+            return await this.HttpClientService.PatchResourceAsync(this.BaseAddressAPI, input, "usuarios/azureAD/eliminar-rol-usuarios", authToken: azureAdToken)!;
+        }
+
         public async Task<IPaginatedResponse<ReporteUsuariosRolesSRCDTO>> GetUsuariosRolesSRC(GetPaginatedReporteUsuariosRolesSRCDTO dto, bool gdiAuth = true)
         {
             var parameters = QueryHelpers.ToQueryKeyValuePairs(dto);

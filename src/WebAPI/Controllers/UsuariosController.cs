@@ -800,6 +800,21 @@
             return result.IsSuccess ? this.Ok(result) : this.BadRequest(result);
         }
 
+        /// <summary>
+        /// Versión Azure AD de <see cref="EliminarRoleBatchUsuarios"/>, para llamadas entre APIs sin usuario logueado
+        /// (por ejemplo, procesos programados disparados por Azure Service Bus).
+        /// </summary>
+        [HttpPatch("azureAD/eliminar-rol-usuarios")]
+        [Authorize(AuthenticationSchemes = "AzureAD")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> EliminarRoleBatchUsuariosAzureAD([FromBody] UpdateUsuarioRolesBatchDTO request, CancellationToken cancellationToken)
+        {
+            return await this.EliminarRoleBatchUsuarios(request, cancellationToken);
+        }
+
         /// <inheritdoc cref="ResolverUsuarioConRol"/>
         [HttpPost("azureAD/directorio/resolver-con-rol")]
         [Authorize(AuthenticationSchemes = "AzureAD")]
