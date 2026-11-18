@@ -703,7 +703,7 @@
         [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ValidarCompatibilidadRoles([FromQuery] ValidarCompatibilidadRolesDTO dto, CancellationToken cancellationToken)
         {
-            if (dto is null || dto.RolesOrigenIds is null || dto.RolesDestinoIds is null )
+            if (dto is null || dto.RolesOrigenIds is null || dto.RolesDestinoIds is null)
             {
                 return this.BadRequest(Error.InvalidInput("dto"));
             }
@@ -802,7 +802,6 @@
 
         /// <summary>
         /// Versión Azure AD de <see cref="EliminarRoleBatchUsuarios"/>, para llamadas entre APIs sin usuario logueado
-        /// (por ejemplo, procesos programados disparados por Azure Service Bus).
         /// </summary>
         [HttpPatch("azureAD/eliminar-rol-usuarios")]
         [Authorize(AuthenticationSchemes = "AzureAD")]
