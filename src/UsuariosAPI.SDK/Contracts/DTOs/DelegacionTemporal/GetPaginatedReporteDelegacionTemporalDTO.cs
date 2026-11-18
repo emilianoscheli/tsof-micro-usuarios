@@ -1,0 +1,21 @@
+namespace UsuariosAPI.SDK.Contracts.DTOs.DelegacionTemporal
+{
+    using APICore.Requests;
+
+    public class GetPaginatedReporteDelegacionTemporalDTO : PaginatedRequest
+    {
+        public int? UsuarioDelegadorId { get; set; }
+
+        public int? UsuarioDelegadoId { get; set; }
+
+        public List<int>? MotivosDelegacionIds { get; set; }
+
+        public bool? Vigente { get; set; }
+
+        public DateOnly? FechaDesde { get; set; }
+
+        public DateOnly? FechaHasta { get; set; }
+
+        public int UsuarioId { get; set; }
+    }
+}

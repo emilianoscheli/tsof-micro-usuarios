@@ -1,0 +1,7 @@
+# Top-most EditorConfig file
+root = true
+
+# Exclude Migrations folder from StyleCop analysis
+[src/Infrastructure/Migrations/*.cs]
+dotnet_diagnostic.SA1200.severity = none
+
